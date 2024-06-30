@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn8jk78w8gqm3"]
+
+[ext_resource type="Texture2D" uid="uid://c4t0o7at4u3hv" path="res://assets/pictures/Forest.jpg" id="1_yjpf0"]
+
+[node name="Background" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="background_picture" type="Sprite2D" parent="ParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_yjpf0")
+centered = false
