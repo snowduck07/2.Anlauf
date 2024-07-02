@@ -1,9 +1,39 @@
-[gd_scene load_steps=28 format=3 uid="uid://hl1544twke85"]
+[gd_scene load_steps=37 format=3 uid="uid://hl1544twke85"]
 
 [ext_resource type="Script" path="res://codes/player.gd" id="1_i8f2e"]
+[ext_resource type="Texture2D" uid="uid://ccahgycx80hb4" path="res://assets/sprites/kings_and_pigs/Sprites/01-King Human/Attack (78x58).png" id="2_1q3an"]
 [ext_resource type="Texture2D" uid="uid://bqwpstkkjusfh" path="res://assets/sprites/kings_and_pigs/Sprites/01-King Human/Jump (78x58).png" id="3_0bbo0"]
 [ext_resource type="Texture2D" uid="uid://528lf2v2wyih" path="res://assets/sprites/kings_and_pigs/Sprites/01-King Human/Run (78x58).png" id="3_b1y4h"]
+[ext_resource type="Texture2D" uid="uid://uv54quk6dvum" path="res://assets/sprites/kings_and_pigs/Sprites/01-King Human/Dead (78x58).png" id="3_rmg37"]
 [ext_resource type="Texture2D" uid="uid://dtv4yg2vbyrh" path="res://assets/sprites/kings_and_pigs/Sprites/01-King Human/Idle (78x58).png" id="3_sskxp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja601"]
+atlas = ExtResource("2_1q3an")
+region = Rect2(0, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iciri"]
+atlas = ExtResource("2_1q3an")
+region = Rect2(78, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv8ce"]
+atlas = ExtResource("2_1q3an")
+region = Rect2(156, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lllpp"]
+atlas = ExtResource("3_rmg37")
+region = Rect2(0, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy3gi"]
+atlas = ExtResource("3_rmg37")
+region = Rect2(78, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycqyr"]
+atlas = ExtResource("3_rmg37")
+region = Rect2(156, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iaro"]
+atlas = ExtResource("3_rmg37")
+region = Rect2(234, 0, 78, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rbq3j"]
 atlas = ExtResource("3_sskxp")
@@ -89,6 +119,37 @@ region = Rect2(546, 0, 78, 58)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ja601")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iciri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv8ce")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lllpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy3gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycqyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iaro")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rbq3j")
 }, {
 "duration": 1.0,
@@ -170,6 +231,7 @@ size = Vector2(33, 54)
 size = Vector2(45, 59)
 
 [node name="player" type="CharacterBody2D"]
+position = Vector2(14, 28)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_i8f2e")
@@ -179,7 +241,9 @@ texture_filter = 1
 position = Vector2(0, -32)
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_qh3fm")
-animation = &"jump"
+animation = &"death"
+frame = 3
+frame_progress = 0.486236
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-16.5, -26)

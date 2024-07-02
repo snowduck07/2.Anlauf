@@ -1195,4 +1195,4 @@ offset_bottom = 23.0
 position = Vector2(1216, 568)
 
 [node name="enemy" parent="." instance=ExtResource("5_xx2nn")]
-position = Vector2(1624, 584)
+position = Vector2(1630, 591)

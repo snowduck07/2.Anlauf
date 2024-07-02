@@ -177,7 +177,7 @@ radius = 7.27273
 radius = 88.6375
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ru8mo"]
-radius = 46.091
+radius = 11.3636
 
 [node name="enemy" type="CharacterBody2D"]
 scale = Vector2(2.2, 2.2)
@@ -187,7 +187,8 @@ script = ExtResource("1_xsa23")
 texture_filter = 1
 position = Vector2(0, -10.9091)
 sprite_frames = SubResource("SpriteFrames_nc0y2")
-animation = &"death"
+animation = &"aggressive"
+frame_progress = 0.0603267
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.72727, -6.81818)
