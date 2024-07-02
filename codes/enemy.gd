@@ -24,6 +24,11 @@ func _physics_process(delta):
 		self.queue_free()
 
 	deal_with_damage()
+	update_health()
+
+func update_health():
+	var  healthbar = $healthbar
+	healthbar.value = health
 
 func _on_detection_area_body_entered(body):
 	player = body

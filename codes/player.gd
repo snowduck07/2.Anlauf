@@ -40,11 +40,17 @@ func _physics_process(delta):
 	move_and_slide()
 	enemy_attack()
 	player_attack()
+	update_health()
 
 	if health <= 0:
 		health = 0
 		get_tree().change_scene_to_file("res://scenes/deathscreen.tscn")
 		Global.alive = false
+
+
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = health
 
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("enemy"):
@@ -56,7 +62,7 @@ func _on_player_hitbox_body_exited(body):
 
 func enemy_attack():
 	if enemy_in_range and enemy_cooldown:
-		health = health - 20
+		health = health - 15
 		enemy_cooldown = false
 		$enemy_cooldown.start()
 		print(health)
@@ -66,13 +72,15 @@ func _on_cooldown_timeout():
 
 func player_attack():
 	var current_direction = "right"
-	
+
 	if Input.is_action_just_pressed("walk_left"):
+		print("left")
 		current_direction = "left"
 	elif Input.is_action_just_pressed("walk_right"):
+		print("right")
 		current_direction = "right"
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and is_on_floor():
 		Global.player_attack = true
 		attack_ip = true
 		if current_direction == "right":
