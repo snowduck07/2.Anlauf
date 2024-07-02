@@ -6,6 +6,7 @@ var player = null
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health = 100
 var player_in_range = false
+var can_take_damage = true
 
 
 func _physics_process(delta):
@@ -18,6 +19,7 @@ func _physics_process(delta):
 		move_and_slide() 
 
 	if health <= 0:
+		Global.enemy_alive = false
 		$AnimatedSprite2D.play("death")
 		self.queue_free()
 
@@ -31,10 +33,6 @@ func _on_detection_area_body_exited(body):
 	player = null
 	chase = false
 
-func enemy():
-	pass
-
-
 func _on_enemy_hitbox_body_entered(body):
 	if body.has_method("player"):
 		player_in_range = true
@@ -45,14 +43,17 @@ func _on_enemy_hitbox_body_exited(body):
 
 func deal_with_damage():
 	if player_in_range and Global.player_attack == true :
-		health = health - 25
-		print("enemy health:" + health)
+		if  can_take_damage == true:
+			health = health - 25
+			$take_damage.start()
+			can_take_damage = false
+			print("enemy health:" + str(health))
+
+func _on_take_damage_timeout():
+	can_take_damage = true
 
 
 
-
-
-
-
-
+func enemy():
+	pass
 
